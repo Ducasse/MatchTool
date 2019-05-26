@@ -2,17 +2,17 @@
 Extended TextModel to allow special styling including the one for pattern nodes
 "
 Class {
-	#name : #MatchTextModel,
+	#name : #MatchCodePresenter,
 	#superclass : #CodePresenter,
 	#instVars : [
 		'isForMatchHolder',
 		'isForMethodHolder'
 	],
-	#category : 'MatchTool-ExtraSpec'
+	#category : #'MatchTool-ExtraSpec'
 }
 
 { #category : #specs }
-MatchTextModel class >> defaultSpec [
+MatchCodePresenter class >> defaultSpec [
 	<spec: #default>
 	
 	^ #(MatchTextAdapter
@@ -20,7 +20,7 @@ MatchTextModel class >> defaultSpec [
 ]
 
 { #category : #initialization }
-MatchTextModel >> initialize [
+MatchCodePresenter >> initialize [
 	
 	super initialize.
 	isForMatchHolder  := false asValueHolder.
@@ -36,31 +36,31 @@ MatchTextModel >> initialize [
 ]
 
 { #category : #setup }
-MatchTextModel >> isForMatch [
+MatchCodePresenter >> isForMatch [
 
 	^ isForMatchHolder value
 ]
 
 { #category : #setup }
-MatchTextModel >> isForMatch: aBoolean [
+MatchCodePresenter >> isForMatch: aBoolean [
 
 	isForMatchHolder value: aBoolean
 ]
 
 { #category : #setup }
-MatchTextModel >> isForMethod [
+MatchCodePresenter >> isForMethod [
 
 	^ isForMethodHolder value
 ]
 
 { #category : #setup }
-MatchTextModel >> isForMethod: aBoolean [
+MatchCodePresenter >> isForMethod: aBoolean [
 
 	isForMethodHolder value: aBoolean
 ]
 
 { #category : #events }
-MatchTextModel >> whenEdited: aBlock [
+MatchCodePresenter >> whenEdited: aBlock [
 	"Set a block to perform when the accept block changed"
 	
 	hasUnacceptedEdits whenChangedDo: [ :val |
@@ -68,13 +68,13 @@ MatchTextModel >> whenEdited: aBlock [
 ]
 
 { #category : #events }
-MatchTextModel >> whenIsForMatchChanged: aBlock [
+MatchCodePresenter >> whenIsForMatchChanged: aBlock [
 	
 	isForMatchHolder whenChangedDo: aBlock
 ]
 
 { #category : #events }
-MatchTextModel >> whenIsForMethodChanged: aBlock [
+MatchCodePresenter >> whenIsForMethodChanged: aBlock [
 	
 	isForMethodHolder whenChangedDo: aBlock
 ]

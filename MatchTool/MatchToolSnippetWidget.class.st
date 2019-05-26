@@ -87,7 +87,7 @@ MatchToolSnippetWidget >> initializeWidgets [
 	
 	titleLabel := self newLabel.
 	methodCheckbox := self newCheckBox.
-	codeArea := self instantiate: MatchTextModel.
+	codeArea := self instantiate: MatchCodePresenter.
 	
 	titleLabel label: self title.
 	methodCheckbox label: 'Method'.
@@ -170,6 +170,6 @@ MatchToolSnippetWidget >> whenMethodDeactivatedDo: aBlock [
 
 { #category : #'checkbox api' }
 MatchToolSnippetWidget >> whenMethodStateChangedDo: aBlock [
-
+	self halt.
 	methodCheckbox whenChangedDo: aBlock
 ]
