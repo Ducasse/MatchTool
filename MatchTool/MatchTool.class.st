@@ -56,7 +56,7 @@ MatchTool class >> worldMenu: aBuilder [
 { #category : #'event handling' }
 MatchTool >> disableLists [
 	resultList disable.
-	matchMap disable.
+	matchMap disable
 ]
 
 { #category : #accessing }
@@ -92,7 +92,7 @@ MatchTool >> initializeLists [
 	matchMap
 		disable;
 		addColumn: (StringTableColumn evaluated: [:assoc | assoc key formattedCode]);
-		addColumn: (StringTableColumn evaluated: [:assoc | assoc value formattedCode]).
+		addColumn: (StringTableColumn evaluated: [:assoc | assoc value asString formattedCode]).
 
 ]
 
@@ -175,13 +175,10 @@ MatchTool >> performMatching [
 	| matches |
 	matchExpression accept.
 	testExpression  accept.
-	
 	self isReadyForMatching ifFalse: [ ^ self ].
 	
 	matches := OrderedCollection new.
-	
 	testExpression astNode doSemanticAnalysis.
-	
 	testExpression astNode nodesDo: [ :node |
 		matchExpression astNode
 			match: node
@@ -191,7 +188,7 @@ MatchTool >> performMatching [
 		
 	resultList enable.
 	matchMap   enable.
-	resultList items: matches.
+	resultList items: matches
 ]
 
 { #category : #accessing }
@@ -237,5 +234,5 @@ MatchTool >> title [
 { #category : #api }
 MatchTool >> windowIcon [
 
-	^ Smalltalk ui icons jigsawIcon
+	^ self iconNamed: #jigsawIcon
 ]

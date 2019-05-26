@@ -7,6 +7,18 @@ Class {
 	#category : 'MatchTool-Pharo7'
 }
 
+{ #category : #styles }
+MchToolTextStyler class >> defaultStyleTable [
+	"color can be a valid argument to Color class>>colorFrom: , or nil to
+	use the editor text color.
+	Multiple emphases can be specified using an array e.g. #(bold italic).
+	If emphasis is not specified, #normal will be used.
+	if pixel height is not specified , then the editor font size will be used.
+	"
+								
+ 	^ self solarizedStyleTable 
+]
+
 { #category : #setup }
 MchToolTextStyler >> beForExpression [
 
@@ -62,8 +74,7 @@ MchToolTextStyler >> parseFaultyMethod: aString [
 { #category : #accessing }
 MchToolTextStyler >> parser [
 
-	^ rbParser ifNil: [
-		rbParser := self defaultParser ]
+	^ rbParser ifNil: [ rbParser := self defaultParser ]
 ]
 
 { #category : #accessing }

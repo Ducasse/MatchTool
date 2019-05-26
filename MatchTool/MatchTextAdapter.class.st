@@ -30,6 +30,5 @@ MatchTextAdapter >> setEditingModeFor: textArea withBehavior: behavior [
 { #category : #actions }
 MatchTextAdapter >> updateEditingMode [
 
-
-	self setEditingModeFor: self widget withBehavior: nil.
+	self setEditingModeFor: self widget withBehavior: nil
 ]

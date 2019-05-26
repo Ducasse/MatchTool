@@ -32,8 +32,7 @@ MatchTextModel >> initialize [
 	isForMethodHolder whenChangedDo: [ :bool | 
 		self changed: #isForMethod: with: { bool } ].
 	
-	self
-		aboutToStyle: true.
+	self aboutToStyle: true
 ]
 
 { #category : #setup }
@@ -60,7 +59,7 @@ MatchTextModel >> isForMethod: aBoolean [
 	isForMethodHolder value: aBoolean
 ]
 
-{ #category : #'api-events' }
+{ #category : #events }
 MatchTextModel >> whenEdited: aBlock [
 	"Set a block to perform when the accept block changed"
 	
@@ -68,13 +67,13 @@ MatchTextModel >> whenEdited: aBlock [
 		val ifTrue: aBlock value ]
 ]
 
-{ #category : #'api-events' }
+{ #category : #events }
 MatchTextModel >> whenIsForMatchChanged: aBlock [
 	
 	isForMatchHolder whenChangedDo: aBlock
 ]
 
-{ #category : #'api-events' }
+{ #category : #events }
 MatchTextModel >> whenIsForMethodChanged: aBlock [
 	
 	isForMethodHolder whenChangedDo: aBlock
