@@ -1,4 +1,0 @@
-setup
-isForPatternCode
-
-	^ codeArea isForMatch

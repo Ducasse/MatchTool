@@ -1,1 +1,0 @@
-an adapter for MatchTextModel

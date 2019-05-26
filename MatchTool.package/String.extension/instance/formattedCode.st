@@ -1,3 +1,0 @@
-*MatchTool
-formattedCode
-	^ self

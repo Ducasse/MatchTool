@@ -1,1 +1,0 @@
-This is a tool that allows to test and explore RB matching expressions

@@ -1,5 +1,0 @@
-setup
-beForMethod
-
-	workspace := nil
-	

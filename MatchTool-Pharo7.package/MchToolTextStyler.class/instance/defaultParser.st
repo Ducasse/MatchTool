@@ -1,4 +1,0 @@
-setup
-defaultParser
-
-	^ RBParser

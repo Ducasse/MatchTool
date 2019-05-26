@@ -1,1 +1,0 @@
-A root of all MatchTool edit modes. (all for highlighting different codes)

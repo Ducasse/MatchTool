@@ -1,4 +1,0 @@
-initialization
-testMethodDeactivated
-
-	matchExpression isForMethod: false

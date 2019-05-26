@@ -1,3 +1,0 @@
-*MatchTool
-beForSmalltalkExpression
-	self editingMode: MchToolCodeExpressionMode new

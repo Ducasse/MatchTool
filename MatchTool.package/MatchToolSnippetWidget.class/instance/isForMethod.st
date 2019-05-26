@@ -1,4 +1,0 @@
-setup
-isForMethod
-
-	^ methodCheckbox state

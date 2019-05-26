@@ -1,1 +1,0 @@
-Style code as smalltalk expression

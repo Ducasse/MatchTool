@@ -1,4 +1,0 @@
-*MatchTool
-visitPatternWrapperBlockNode: aRBPatternWrapperBlockNode
-	self visitNode: aRBPatternWrapperBlockNode wrappedNode.
-	self visitBlockNode: aRBPatternWrapperBlockNode
