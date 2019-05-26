@@ -4,7 +4,7 @@ Class {
 	#instVars : [
 		'rbParser'
 	],
-	#category : 'MatchTool-Pharo7'
+	#category : #'MatchTool-Styling'
 }
 
 { #category : #styles }
@@ -16,7 +16,7 @@ MchToolTextStyler class >> defaultStyleTable [
 	if pixel height is not specified , then the editor font size will be used.
 	"
 								
- 	^ self solarizedStyleTable 
+ 	^ self solarizedStyleTable
 ]
 
 { #category : #setup }
@@ -55,9 +55,8 @@ MchToolTextStyler >> defaultParser [
 MchToolTextStyler >> parse: aText isMethod: isMethod [
 
 	^ isMethod 
-		ifTrue: [ 
-			self parseFaultyMethod: aText ]	
-		ifFalse:[ self parser parseFaultyExpression: aText ].
+		ifTrue: [ self parseFaultyMethod: aText ]	
+		ifFalse:[ self parser parseFaultyExpression: aText ]
 ]
 
 { #category : #parsing }
@@ -86,14 +85,12 @@ MchToolTextStyler >> parser: aParserClass [
 { #category : #private }
 MchToolTextStyler >> resolveStyleFor: aVariableNode [
 	| style |
-	
 	style := super resolveStyleFor: aVariableNode.
 	"we are working with snippets, we don't want red variables just
 	because they were not defined anywhare"
 	(style == #invalid or: [ 
 	 style == #incompleteIdentifier ])
 		ifTrue: [ style := #tempVar ].
-	
 	^ style
 ]
 
@@ -168,7 +165,6 @@ MchToolTextStyler >> visitPatternVariableNode: aVariableNode [
 
 { #category : #'visiting rb nodes' }
 MchToolTextStyler >> visitVariableNode: aVariableNode [
-	
 	
 	aVariableNode isPatternNode
 		ifTrue: [ self visitPatternVariableNode: aVariableNode ]
