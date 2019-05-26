@@ -2,7 +2,7 @@
 This is a tool that allows to test and explore RB matching expressions
 "
 Class {
-	#name : #MatchTool,
+	#name : #MatchToolPresenter,
 	#superclass : #ComposablePresenter,
 	#instVars : [
 		'matchExpression',
@@ -12,11 +12,11 @@ Class {
 		'executeButton',
 		'helpButton'
 	],
-	#category : 'MatchTool'
+	#category : #'MatchTool-CorePresenter'
 }
 
 { #category : #specs }
-MatchTool class >> defaultSpec [
+MatchToolPresenter class >> defaultSpec [
 
 	^ SpecLayout composed
 		newColumn: [ :col | col
@@ -39,10 +39,10 @@ MatchTool class >> defaultSpec [
 ]
 
 { #category : #menu }
-MatchTool class >> worldMenu: aBuilder [
+MatchToolPresenter class >> worldMenu: aBuilder [
 
 	<worldMenu>
-	(aBuilder item: #'MatchTool')
+	(aBuilder item: #MatchToolPresenter)
 		order: 0.40;
 		icon: (Smalltalk ui icons jigsawIcon);
 		parent: #Tools;
@@ -54,29 +54,29 @@ MatchTool class >> worldMenu: aBuilder [
 ]
 
 { #category : #'event handling' }
-MatchTool >> disableLists [
+MatchToolPresenter >> disableLists [
 	resultList disable.
 	matchMap disable
 ]
 
 { #category : #accessing }
-MatchTool >> executeButton [
+MatchToolPresenter >> executeButton [
 	^ executeButton
 ]
 
 { #category : #accessing }
-MatchTool >> helpButton [
+MatchToolPresenter >> helpButton [
 	^ helpButton
 ]
 
-{ #category : #api }
-MatchTool >> initialExtent [
+{ #category : #'ui display' }
+MatchToolPresenter >> initialExtent [
 	
 	^ 800 @ 400
 ]
 
 { #category : #initialization }
-MatchTool >> initializeFocusOrder [
+MatchToolPresenter >> initializeFocusOrder [
 	self focusOrder
 		add: matchExpression;
 		add: testExpression;
@@ -85,7 +85,7 @@ MatchTool >> initializeFocusOrder [
 ]
 
 { #category : #initialization }
-MatchTool >> initializeLists [
+MatchToolPresenter >> initializeLists [
 	resultList
 		disable;
 		displayBlock: [ :assoc | assoc key formattedCode ].
@@ -97,7 +97,7 @@ MatchTool >> initializeLists [
 ]
 
 { #category : #initialization }
-MatchTool >> initializePresenter [
+MatchToolPresenter >> initializePresenter [
 	matchExpression
 		beForPatternCode;
 		whenCodeEdited: [ self disableLists ];
@@ -117,7 +117,7 @@ MatchTool >> initializePresenter [
 ]
 
 { #category : #initialization }
-MatchTool >> initializeWidgets [
+MatchToolPresenter >> initializeWidgets [
 	self instantiateWidgets.
 	matchExpression
 		title: 'Pattern code';
@@ -136,9 +136,9 @@ MatchTool >> initializeWidgets [
 ]
 
 { #category : #initialization }
-MatchTool >> instantiateWidgets [
-	matchExpression := self instantiate: MatchToolSnippetWidget.
-	testExpression := self instantiate: MatchToolSnippetWidget.
+MatchToolPresenter >> instantiateWidgets [
+	matchExpression := self instantiate: CodeSnippetPresenter.
+	testExpression := self instantiate: CodeSnippetPresenter.
 	resultList := self newList.
 	executeButton := self newButton.
 	helpButton := self newButton.
@@ -146,7 +146,7 @@ MatchTool >> instantiateWidgets [
 ]
 
 { #category : #testing }
-MatchTool >> isReadyForMatching [
+MatchToolPresenter >> isReadyForMatching [
 
 	^ (matchExpression hasUnacceptedEdits or: [ 
 		testExpression  hasUnacceptedEdits or: [ 
@@ -155,23 +155,23 @@ MatchTool >> isReadyForMatching [
 ]
 
 { #category : #accessing }
-MatchTool >> matchExpression [
+MatchToolPresenter >> matchExpression [
 	^ matchExpression
 ]
 
 { #category : #accessing }
-MatchTool >> matchMap [
+MatchToolPresenter >> matchMap [
 	^ matchMap
 ]
 
 { #category : #initialization }
-MatchTool >> matchMethodActivated [
+MatchToolPresenter >> matchMethodActivated [
 
 	testExpression isForMethod: true
 ]
 
 { #category : #'event handling' }
-MatchTool >> performMatching [
+MatchToolPresenter >> performMatching [
 	| matches |
 	matchExpression accept.
 	testExpression  accept.
@@ -192,12 +192,12 @@ MatchTool >> performMatching [
 ]
 
 { #category : #accessing }
-MatchTool >> resultList [
+MatchToolPresenter >> resultList [
 	^ resultList
 ]
 
 { #category : #initialization }
-MatchTool >> resultsChanged: newItems [
+MatchToolPresenter >> resultsChanged: newItems [
 	matchMap items: #().
 	resultList unselectAll.
 	^ newItems
@@ -206,7 +206,7 @@ MatchTool >> resultsChanged: newItems [
 ]
 
 { #category : #initialization }
-MatchTool >> selectedResultsItemChanged: assoc [
+MatchToolPresenter >> selectedResultsItemChanged: assoc [
 	^ assoc
 		ifNil: [ matchMap items: #().
 			testExpression clearCodeSelection ]
@@ -215,24 +215,24 @@ MatchTool >> selectedResultsItemChanged: assoc [
 ]
 
 { #category : #accessing }
-MatchTool >> testExpression [
+MatchToolPresenter >> testExpression [
 	^ testExpression
 ]
 
 { #category : #initialization }
-MatchTool >> testMethodDeactivated [
+MatchToolPresenter >> testMethodDeactivated [
 
 	matchExpression isForMethod: false
 ]
 
-{ #category : #api }
-MatchTool >> title [
+{ #category : #'ui display' }
+MatchToolPresenter >> title [
 
 	^ 'MatchTool'
 ]
 
-{ #category : #api }
-MatchTool >> windowIcon [
+{ #category : #'ui display' }
+MatchToolPresenter >> windowIcon [
 
 	^ self iconNamed: #jigsawIcon
 ]
