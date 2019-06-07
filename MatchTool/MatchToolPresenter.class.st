@@ -44,7 +44,7 @@ MatchToolPresenter class >> worldMenu: aBuilder [
 	<worldMenu>
 	(aBuilder item: #MatchTool)
 		order: 0.40;
-		icon: (Smalltalk ui icons jigsawIcon);
+		icon: (self iconNamed: #jigsawIcon);
 		parent: #Tools;
 		action: [
 			self new
