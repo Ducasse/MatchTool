@@ -42,7 +42,7 @@ MatchToolPresenter class >> defaultSpec [
 MatchToolPresenter class >> worldMenu: aBuilder [
 
 	<worldMenu>
-	(aBuilder item: #MatchToolPresenter)
+	(aBuilder item: #MatchTool)
 		order: 0.40;
 		icon: (Smalltalk ui icons jigsawIcon);
 		parent: #Tools;
