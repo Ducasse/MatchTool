@@ -3,7 +3,7 @@ This is a tool that allows to test and explore RB matching expressions
 "
 Class {
 	#name : #MatchToolPresenter,
-	#superclass : #ComposablePresenter,
+	#superclass : #SpPresenter,
 	#instVars : [
 		'matchExpression',
 		'testExpression',
@@ -18,7 +18,7 @@ Class {
 { #category : #specs }
 MatchToolPresenter class >> defaultSpec [
 
-	^ SpecLayout composed
+	 "^ SpLayout composed
 		newColumn: [ :col | col
 			add: #matchExpression;
 			add: #testExpression. ]
@@ -35,7 +35,23 @@ MatchToolPresenter class >> defaultSpec [
 		newColumn: [ :col | col
 			add: #matchMap ]
 		origin: 0.73 @ 0 corner: 1 @ 1;
-		yourself
+		yourself"
+		
+	^ SpBoxLayout newHorizontal
+		add:
+			(SpBoxLayout newVertical
+				add: #matchExpression;
+				add: #testExpression;
+				yourself) ;
+		add: (SpBoxLayout newVertical
+				add: #executeButton;
+				add: #helpButton;
+				add: #resultList;
+				yourself) ;	
+		add: (SpBoxLayout newVertical
+				add: #matchMap;
+				yourself);
+		yourself		
 ]
 
 { #category : #menu }

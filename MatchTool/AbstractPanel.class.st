@@ -16,7 +16,7 @@ varNames
 "
 Class {
 	#name : #AbstractPanel,
-	#superclass : #ComposablePresenter,
+	#superclass : #SpPresenter,
 	#instVars : [
 		'textModel',
 		'code',

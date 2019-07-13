@@ -7,7 +7,7 @@ The wideget can operate for both smalltalk code and pattern code.
 "
 Class {
 	#name : #CodeSnippetPresenter,
-	#superclass : #ComposablePresenter,
+	#superclass : #SpPresenter,
 	#instVars : [
 		'titleLabel',
 		'methodCheckbox',
@@ -20,14 +20,27 @@ Class {
 { #category : #specs }
 CodeSnippetPresenter class >> defaultSpec [
 
-	^ SpecLayout composed newColumn: [ :col | col
-		newRow: [ :row | row
-			add: #titleLabel;
-			add: #methodCheckbox width: 100. ]
-		height: 30;
-		newRow: [ :row | row
-			add: #codeArea ] ];
-		yourself
+	"^ SpecLayout composed 
+		newColumn: [ :col | col
+				newRow: [ :row | row
+					add: #titleLabel;
+					add: #methodCheckbox width: 100. ]
+				height: 30;
+				newRow: [ :row | row add: #codeArea ] 
+				];
+		yourself"
+		
+	^ SpBoxLayout newVertical
+		add:
+			(SpBoxLayout newVertical
+				add: #titleLabel;
+				add: #methodCheckbox;
+				yourself);
+		add: (SpBoxLayout newVertical
+					add: #codeArea;
+					yourself );
+		yourself 
+		
 ]
 
 { #category : #'code area api' }
