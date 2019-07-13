@@ -3,7 +3,9 @@ A widget with a title label, code area and a  checkbox to switch for method/expr
 
 On accept of the code area the widjet will parse the code into an ast and store it.
 
-The wideget can operate for both smalltalk code and pattern code.
+The widget can operate for both Pharo code and pattern code.
+
+CodeSnippetPresenter new openWithSpec
 "
 Class {
 	#name : #CodeSnippetPresenter,
