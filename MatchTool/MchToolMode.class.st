@@ -4,7 +4,7 @@ A root of all MatchTool edit modes. (all for highlighting different codes)
 Class {
 	#name : #MchToolMode,
 	#superclass : #RubSmalltalkCodeMode,
-	#category : 'MatchTool-Styling'
+	#category : #'MatchTool-Styling'
 }
 
 { #category : #accessing }

@@ -21,18 +21,14 @@ MatchCodePresenter class >> defaultSpec [
 
 { #category : #initialization }
 MatchCodePresenter >> initialize [
-	
 	super initialize.
-	isForMatchHolder  := false asValueHolder.
+	isForMatchHolder := false asValueHolder.
 	isForMethodHolder := false asValueHolder.
-	
-	isForMatchHolder whenChangedDo: [ :bool | 
-		self changed: #isForMatch: with: { bool } ].
-		
-	isForMethodHolder whenChangedDo: [ :bool | 
-		self changed: #isForMethod: with: { bool } ].
-	
-	self aboutToStyle: true
+	isForMatchHolder
+		whenChangedDo: [ :bool | self changed: #isForMatch: with: {bool} ].
+	isForMethodHolder
+		whenChangedDo: [ :bool | self changed: #isForMethod: with: {bool} ].
+	self syntaxHighlight: true
 ]
 
 { #category : #setup }

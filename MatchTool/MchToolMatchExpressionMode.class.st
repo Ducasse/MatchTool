@@ -4,7 +4,7 @@ Style code as pattern-based expression
 Class {
 	#name : #MchToolMatchExpressionMode,
 	#superclass : #MchToolMode,
-	#category : 'MatchTool-Styling'
+	#category : #'MatchTool-Styling'
 }
 
 { #category : #'initialize-release' }

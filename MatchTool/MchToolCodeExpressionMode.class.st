@@ -4,7 +4,7 @@ Style code as smalltalk expression
 Class {
 	#name : #MchToolCodeExpressionMode,
 	#superclass : #MchToolMode,
-	#category : 'MatchTool-Styling'
+	#category : #'MatchTool-Styling'
 }
 
 { #category : #'initialize-release' }
