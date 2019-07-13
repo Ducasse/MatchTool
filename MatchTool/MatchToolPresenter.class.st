@@ -1,5 +1,19 @@
 "
-This is a tool that allows to test and explore RB matching expressions
+This is a tool that allows one to test and explore RB matching expressions
+
+MatchToolPresenter new openWithSpec 
+
+The main window consist of 3 columns. The first column consists of two code areas. The top one should be used to enter a match code also known as pattern code, while the bottom one should be used for entering plain Smalltalk code as a test sample. Both text areas can be switched into a ""method mode"" where they will parse the entered text as if it were a method, otherwise they expect the entered code to be an expression. The second column contains the result of matching, a help button and the main execute button (with a cmd(ctrl)+enter shortcut) on top of it. After the button is pressed, both match code and test code are accepted and if there are no errors the matching is performed. MatchTool searches for the match pattern in all the test samples and lists the detected matches in the result list. Clicking on the items from the result list highlights the matched interval in the test sample code area and shows the match map of the pattern code in the third column.
+
+Match map probably needs more explanation. Imagine you have a pattern
+
+`item printOn: `@expr
+While it will match a test sample
+
+url printOn: FileStream stdout
+the match map list will tell you that ``itemwas mapped tourl` while ` `@expr` was mapped to `FileStream stdout`.
+
+
 "
 Class {
 	#name : #MatchToolPresenter,
@@ -135,10 +149,7 @@ MatchToolPresenter >> initializePresenter [
 { #category : #initialization }
 MatchToolPresenter >> initializeWidgets [
 	self instantiateWidgets.
-	matchExpression
-		title: 'Pattern code';
-		beForPatternCode.
-	testExpression title: 'Test code'.
+	matchExpression beForPatternCode.
 	executeButton
 		icon:
 			(self iconNamed: #smallDoIt);
